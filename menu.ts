@@ -5,32 +5,56 @@ enum MenuState {
     Open
 }
 /**
- * Menu
+ * AdvancedMenu
  */
 //% weight=100 color=#efbc11 icon=""
-namespace menu {
-    
-
+namespace advancedmenu {
     const MenuKind = SpriteKind.create()
-    let menuBg: Sprite = null
-    let menuBgColor = 0
-    let menuTitleColor = 15
-    let menuTitleHeight = 14
-    let menuTitlePositionY = 8
-    menuBgColor = 6
 
-    /**
-     * Show the menu
-     * @param title Title of the menu, eg: "Menu"
-     */
-    //% block
-    export function show(title: string): void {
-        menuBg = sprites.create(image.create(scene.screenWidth(), scene.screenHeight()), MenuKind)
-        menuBg.image.fill(menuBgColor)
+    //% block="create menu"
+    //% blockSetVariable=menu
+    export function createMenuSprite(): MenuSprite {
+        return new MenuSprite();
+    }
 
-        const titleImg = image.create(scene.screenWidth(), menuTitleHeight)
-        titleImg.printCenter(title, 0, menuTitleColor)
-        const titleSprite = sprites.create(titleImg, MenuKind)
-        titleSprite.setPosition(scene.screenWidth() / 2, menuTitlePositionY)
+    export class MenuSprite {
+        _menuBg: Sprite;
+        _title: string;
+        _menuBgColor: color;
+        _menuTitleColor: color;
+        _menuTitleHeight: number;
+        _menuTitlePositionY: number;
+
+        constructor(){
+            this._title = "Menu Title"
+            this._menuBgColor = 6
+            this._menuTitleColor = 15
+            this._menuTitleHeight = 14
+            this._menuTitlePositionY = 8
+        }
+
+        //% blockCombine
+        set menuBgColor(c: color) {
+            this._menuBgColor = c
+        }
+        //% blockCombine
+        set menuTitleColor(c: color) {
+            this._menuTitleColor = c
+        }
+        //%blockCombine
+        set title(v: string) {
+            this._title = v
+        }
+        
+        //% block
+        public show() {
+            this._menuBg = sprites.create(image.create(scene.screenWidth(), scene.screenHeight()), MenuKind)
+            this._menuBg.image.fill(this._menuBgColor)
+
+            const titleImg = image.create(scene.screenWidth(), this._menuTitleHeight)
+            titleImg.printCenter(this._title, 0, this._menuTitleColor)
+            const titleSprite = sprites.create(titleImg, MenuKind)
+            titleSprite.setPosition(scene.screenWidth() / 2, this._menuTitlePositionY)
+        }
     }
 }
