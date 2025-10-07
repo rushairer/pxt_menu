@@ -6,10 +6,6 @@
         "pxt_menu": "github:rushairer/pxt_menu#5ffda81f715bd03feff5c9ac297148fb3ad69ba8"
     },
     "files": [
-        "main.blocks",
-        "main.ts",
-        "README.md",
-        "assets.json",
         "menu.ts"
     ],
     "testFiles": [
