@@ -8,15 +8,9 @@
     "files": [
         "menu.ts"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "public": true,
     "targetVersions": {
         "target": "2.0.59",
         "targetId": "arcade"
-    },
-    "supportedTargets": [
-        "arcade"
-    ],
-    "preferredEditor": "tsprj"
+    }
 }
